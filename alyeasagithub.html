@@ -39,6 +39,7 @@
   <p>Hi! I'm Alyeasa, a JGS student!</p>
 	 <input id="Name" type="name" placeholder="Your name">
   <input id="Email" type="email" placeholder="Your email">
+	<input id="Film" type="film" placeholder="Your favorite film"> 
   <input id="submit" type="submit">
 	
 	<script type="module">
@@ -68,6 +69,7 @@
 
 		const Name = document.querySelector("#Name") 
 		const Email = document.querySelector("#Email")
+		const Film = document.querySelector("#Film")
 		document.querySelector('#submit').addEventListener('click', Submit)
 
 		function Submit() {
@@ -75,11 +77,14 @@
 	  
 		  set(ref(db, timestamp), {
 			  Name: Name.value,
-		      email: Email.value,
+		    email: Email.value,
+				film: Film.value,
+				
 		  });
 
 		  Name.value = ""
 		  Email.value = ""
+			Film.value = ""
 		}
 
 		function buildTimestamp() {
@@ -123,3 +128,4 @@
 
 	</script>
 </body>
+
