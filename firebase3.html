@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fuzzy+Bubbles:wght@400;700&family=Rubik+Bubbles&display=swap" rel="stylesheet">
+
+
+<style>
+	
+	input {
+		font-size: 22px;
+	}
+
+body {
+ 
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #1b130d;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: "Bubblegum Sans", sans-serif;
+  text-align: center;
+  font-size: 65px;
+  color: #614731;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: 614731;
+  margin: 0px 0 70px 0;
+    font-family: "Rubik Bubbles", system-ui;
+}
+p {
+  color: rgba(170, 120, 80, 1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,.4), rgba(2,7,5,4));
+  background: -webkit-linear-gradient(bottom, rgba(70,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  font-family: "Fuzzy Bubbles", sans-serif;
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://www.queensleeappetit.com/wp-content/uploads/2021/04/6-layer-chocolate-fudge-cake-recipe-queensleeappetit.com-9-1-720x540.jpg");
+}
+.second{
+  background-image: url("https://thesouthernladycooks.com/wp-content/uploads/2020/12/baked-chocolate-donuts-4-blog-500x375.jpg");
+}
+.dessert{
+  background-image: url("https://insanelygoodrecipes.com/wp-content/uploads/2024/01/chocolate-brownies-13.jpg");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+	
+
+		
+<h1>alyeasa's eatery</h1>
+<h2>a New York City bakery</h2>
+<div class="first">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>chocolate fudge cake <span class="price">$9</span><br />
+  <small> a baked dense and fudgy dessert with cocoa powder and melted chocolate with a slightly crisp edge.   </small></p>
+</div>
+
+<div class="second">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>chocolate frosted donut <span class="price">$8</span><br />
+  <small> a chocolate glazed sweet ring-shaped pastry with cocoa powder fluffy inside with slight a hint of vanilla.  </small></p>
+</div>
+  
+<div class="dessert">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>brownies <span class="price">$7</span><br />
+  <small> a chocolate crisp, soft waffle with a rich flavor topped with a drizzle of melted chocolate and chocolate chips.   </small></p>
+</div>
+
+<br><br>
+<input id="Name" type="name" placeholder="Your name">
+  <input id="Email" type="email" placeholder="Your email">
+  <input id="submit" type="submit">
+<br><br>
+
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+
+	<script type="module">
+	  // Import the functions you need from the SDKs you need
+	  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+		import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+		
+
+	  // TODO: Add SDKs for Firebase products that you want to use
+	  // https://firebase.google.com/docs/web/setup#available-libraries
+
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+	    apiKey: "AIzaSyAbVHKtNmckVosXNZucDNDyt58gA-QWGQs",
+	    authDomain: "alyeasa-3e875.firebaseapp.com",
+	    projectId: "alyeasa-3e875",
+	    storageBucket: "alyeasa-3e875.firebasestorage.app",
+	    messagingSenderId: "525196393856",
+	    appId: "1:525196393856:web:cbf7e52921e37cdde89565",
+	    measurementId: "G-VP2WRJPM69"
+	  };
+
+	  // Initialize Firebase
+	  const app = initializeApp(firebaseConfig);
+		const db = getDatabase(app);
+const Name = document.querySelector("#Name") 
+		const Email = document.querySelector("#Email")
+		const prices = document.querySelectorAll(".price") 
+		 
+		
+const quantities = document.querySelectorAll(".quantities") 
+const itemsList = ["chocolate fudge cake", "frosted donut", "brownies"]
+		
+		
+		document.querySelector('#submit').addEventListener('click', Submit)
+		
+		
+		
+
+		function Submit() {
+		  const timestamp = buildTimestamp()
+		  let total = 0
+			let cart = { }
+		  for  (let i=0; i<quantities.length; i=i+1) {
+		  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+			  	let price = prices[i].innerHTML.replace('$', '')
+				  total = total + quantities[i].value * price 
+		  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+		  	}
+		  	quantities[i].value = ""
+		  }
+			
+	  
+		  set(ref(db, timestamp), {
+			  Name: Name.value,
+		      email: Email.value,
+				cart: cart,
+	      totalPrice: total,
+	      paid: "not yet",
+
+		  });
+
+		  Name.value = ""
+		  Email.value = ""
+		}
+
+		function buildTimestamp() {
+		  const now = new Date();
+		  let timestamp = now.getFullYear().toString() + "/";
+		  //const month = now.toLocaleString('default', { month: 'long' });
+
+		  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+		  month = month.toString()
+		  month = addLeadingZero(month)
+		  timestamp += month + "/"; 
+
+		  let date = now.getDate().toString()
+		  date = addLeadingZero(date)
+		  timestamp += date + "/";
+
+		  let hours = now.getHours().toString()
+		  hours = addLeadingZero(hours)
+		  timestamp += hours + ":";
+
+		  let minutes = now.getMinutes().toString()
+		  minutes = addLeadingZero(minutes)
+		  timestamp += minutes + ":";
+
+		  let seconds = now.getSeconds().toString()
+		  seconds = addLeadingZero(seconds)
+		  timestamp += seconds;
+  
+		  return timestamp
+		}
+	
+		function addLeadingZero(units) {
+			if (units.length < 2) {
+				units = "0" + units
+			}
+			return units
+		}
+
+	</script>
+
+
+
+</body>
